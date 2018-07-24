@@ -6,9 +6,11 @@ class Pawn < Piece
     super(color, board, pos)
     @forward_dir = -1 if @color == :black
     @forward_dir = 1 if @color == :white
+    @has_moved = false
+    @moved_up_2 = false
     move_dirs
   end
-  
+
   def move_dirs
     @moves = [[1, 0], [1, 1], [1, -1]]
     @moves = @moves.map do |el|
@@ -17,18 +19,18 @@ class Pawn < Piece
       end
     end
   end
-  
-  
+
+
   private
   def at_start_row?
-    
+
   end
-  
+
   def forward_steps
-    
+
   end
-  
+
   def side_attacks
-    
+
   end
 end

@@ -1,4 +1,3 @@
-
 require_relative 'player.rb'
 require_relative 'display.rb'
 require 'byebug'
@@ -11,7 +10,6 @@ class Game
     @display=display
     @p1,@p2 = p1, p2
     @currentplayer = p1
-
   end
 
   def play
@@ -58,4 +56,6 @@ if __FILE__ == $PROGRAM_NAME
     game.take_turn
     count += 1
   end
+  swap_turn
+  puts "#{@currentplayer.color} wins!"
 end
