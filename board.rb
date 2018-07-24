@@ -22,29 +22,29 @@ class Board
     @rows.each_with_index do |row ,i|
       row.each.with_index do |col ,j|
         if i == 0 && (j == 0 || j == 7)
-          @rows[i][j] = RangePiece.new(:white, self, [i, j], :R)
+          @rows[i][j] = RangePiece.new(:white, self, [i, j], :♖)
         elsif i == 7 && (j == 0 || j == 7)
-          @rows[i][j] = RangePiece.new(:black, self, [i, j], :R)
+          @rows[i][j] = RangePiece.new(:black, self, [i, j], :♜)
         elsif i == 1
-          @rows[i][j] = Pawn.new(:white, self, [i, j], :P)
+          @rows[i][j] = Pawn.new(:white, self, [i, j], :♙)
         elsif i == 6
-          @rows[i][j] = Pawn.new(:black, self, [i, j], :P)
+          @rows[i][j] = Pawn.new(:black, self, [i, j], :♟)
         elsif i == 0 && (j == 1 || j == 6)
-          @rows[i][j] = StepPiece.new(:white, self, [i, j], :N)
+          @rows[i][j] = StepPiece.new(:white, self, [i, j], :♘)
         elsif i == 7 && (j == 1|| j == 6)
-          @rows[i][j] = StepPiece.new(:black, self, [i, j], :N)
+          @rows[i][j] = StepPiece.new(:black, self, [i, j], :♞)
         elsif i == 0 && (j == 2 || j == 5)
-          @rows[i][j] = RangePiece.new(:white, self, [i, j], :B)
+          @rows[i][j] = RangePiece.new(:white, self, [i, j], :♗)
         elsif i == 7 && (j == 2 || j == 5)
-          @rows[i][j] = RangePiece.new(:black, self, [i, j], :B)
+          @rows[i][j] = RangePiece.new(:black, self, [i, j], :♝)
         elsif i == 0 && j == 3
-          @rows[i][j] = StepPiece.new(:white, self, [i, j], :K)
+          @rows[i][j] = StepPiece.new(:white, self, [i, j], :♔)
         elsif i == 7 && j == 3
-          @rows[i][j] = StepPiece.new(:black, self, [i, j], :K)
+          @rows[i][j] = StepPiece.new(:black, self, [i, j], :♚)
         elsif i == 0 && j == 4
-          @rows[i][j] = RangePiece.new(:white, self, [i, j], :Q)
+          @rows[i][j] = RangePiece.new(:white, self, [i, j], :♕)
         elsif i == 7 && j == 4
-          @rows[i][j] = RangePiece.new(:black, self, [i, j], :Q)
+          @rows[i][j] = RangePiece.new(:black, self, [i, j], :♛)
         else
           @rows[i][j] = @sentinel
         end
@@ -126,7 +126,7 @@ class Board
   def find_king(color)
     self.rows.each_with_index do |row,i|
       row.each_with_index do |col,j|
-        return [i,j] if self[[i,j]].symbol == :K && self[[i,j]].color == color
+        return [i,j] if self[[i,j]].symbol == :♔ || self[[i,j]].symbol == :♚ && self[[i,j]].color == color
       end
     end
   end
