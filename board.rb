@@ -67,6 +67,11 @@ class Board
     raise ArgumentError.new("This isn't your piece") unless self[start_pos].color == color
     raise ArgumentError.new("A piece is already there") if self[end_pos].color == color
     raise ArgumentError.new("Invalid End position") unless self[start_pos].valid_moves.include?(end_pos)
+    if self[start_pos].class == Pawn && (start_pos[0]-end_pos[0]).abs == 2
+      self[start_pos].en_passantable = true
+    else
+      self[start_pos].en_passantable = false
+    end
     self[end_pos] = self[start_pos]
     self[start_pos] = @sentinel
     self[end_pos].has_moved = true
@@ -126,15 +131,22 @@ class Board
         end
       end
     end
-    debugger
     pieces
   end
 
   def dup
     dup_board = Board.new()
+    dup_board.rows.each_with_index do |row,i|
+      row.each_with_index do |col, j|
+        dup_board.rows[i][j] = @sentinel
+      end
+    end
     pieceArray = self.pieces
-
-
+    pieceArray.each do |piece|
+      new_piece = piece.class.new(piece.color, dup_board, piece.pos, piece.symbol)
+      dup_board[new_piece.pos]= new_piece
+    end
+    dup_board
   end
 
 end

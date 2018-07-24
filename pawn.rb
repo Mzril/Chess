@@ -1,5 +1,6 @@
 require_relative 'piece.rb'
 class Pawn < Piece
+  attr_accessor :en_passantable
   attr_reader :forward_dir
   def initialize(color, board, pos, symbol)
     @symbol = symbol
@@ -7,6 +8,7 @@ class Pawn < Piece
     @forward_dir = -1 if @color == :black
     @forward_dir = 1 if @color == :white
     @has_moved = false
+    @en_passantable = false
     @moved_up_2 = false
     move_dirs
   end

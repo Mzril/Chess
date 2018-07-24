@@ -7,8 +7,8 @@ require 'byebug'
 
 class Piece
   include Vector
-  attr_accessor :pos
-  attr_reader :color, :moves, :board, :has_moved
+  attr_accessor :pos, :has_moved
+  attr_reader :color, :moves, :board
   def initialize(color, board, pos)
     @color = color
     @board = board

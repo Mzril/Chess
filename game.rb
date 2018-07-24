@@ -52,10 +52,10 @@ if __FILE__ == $PROGRAM_NAME
   puts "Dude is White"
   game = Game.new(b,d,p1,p2);
   count = 0
-  until count == 10
+  until b.checkmate?(game.currentplayer.color)
     game.take_turn
     count += 1
   end
   swap_turn
-  puts "#{@currentplayer.color} wins!"
+  puts "#{game.currentplayer.color} wins!"
 end
