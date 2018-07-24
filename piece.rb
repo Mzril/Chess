@@ -54,8 +54,11 @@ class Piece
     @symbol
   end
 
-  private
   def move_into_check?(end_pos)
-
+    debugger
+    duped = self.board.dup
+    duped.move_piece!(self.color, self.pos, end_pos)
+    debugger
+    duped.in_check?(self.color)
   end
 end

@@ -66,15 +66,24 @@ class Board
     raise ArgumentError.new("Empty Start Position") if self[start_pos].class == NullPiece
     raise ArgumentError.new("This isn't your piece") unless self[start_pos].color == color
     raise ArgumentError.new("A piece is already there") if self[end_pos].color == color
+    duped = self.dup
+    duped.move_piece!(color,start_pos, end_pos)
+    raise ArgumentError.new("Can't move into Check") if duped.in_check?(color)
     raise ArgumentError.new("Invalid End position") unless self[start_pos].valid_moves.include?(end_pos)
     if self[start_pos].class == Pawn && (start_pos[0]-end_pos[0]).abs == 2
       self[start_pos].en_passantable = true
-    else
+    elsif self[start_pos].class == Pawn
       self[start_pos].en_passantable = false
     end
     self[end_pos] = self[start_pos]
     self[start_pos] = @sentinel
     self[end_pos].has_moved = true
+    self[end_pos].pos = end_pos
+  end
+
+  def move_piece!(color, start_pos, end_pos)
+    self[end_pos] = self[start_pos]
+    self[start_pos] = @sentinel
     self[end_pos].pos = end_pos
   end
 
@@ -94,7 +103,7 @@ class Board
         next if col.color != color
         col.valid_moves.each do |future_move|
           duped_board = self.dup
-          duped_board.move_piece(color, col.pos, future_move)
+          duped_board.move_piece!(color, col.pos, future_move)
           return false unless duped_board.in_check?(color)
         end
       end
@@ -147,14 +156,6 @@ class Board
       dup_board[new_piece.pos]= new_piece
     end
     dup_board
-  end
-
-end
-
-class Array
-
-  def ddup
-    self.map { |el| el.class == Array ? el.ddup : el }
   end
 
 end
