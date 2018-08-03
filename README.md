@@ -1,14 +1,18 @@
 # Chess
 A simple game of Chess played through the Mac terminal
 
-How to play
+##How to play
 
--Clone or Download the folder
+###Prerequisites 
 
--open this folder in the terminal
+Need upto date version of bundler
 
--run bundle install OR gem install colorize
+1. 
 
--After install completion, run ruby game.rb
+2. 
+
+3. ```bundle install``` OR ```gem install colorize```
+
+4. After install completion, run ruby game.rb
 
 Enjoy!
