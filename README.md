@@ -1,18 +1,16 @@
 # Chess
 A simple game of Chess played through the Mac terminal
 
-##How to play
+## How to play
 
-###Prerequisites 
+### Prerequisites 
 
 Need upto date version of bundler
 
-1. 
+1. Clone the folder with ```git clone https://github.com/Mzril/Chess.git```
 
-2. 
+2. run ```bundle install``` OR ```gem install colorize```
 
-3. ```bundle install``` OR ```gem install colorize```
-
-4. After install completion, run ruby game.rb
+3. After install completion, run ```ruby game.rb```
 
 Enjoy!
