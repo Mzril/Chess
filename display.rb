@@ -13,14 +13,14 @@ class Display
       row.each_with_index do |col,j|
         if @cursor.cursor_pos == [i,j]
           printing = col.symbol.to_s
-          print " #{printing}  ".colorize(background: :light_blue)
+          print " #{printing} ".colorize(background: :light_blue)
         else
           if (i + j) % 2 == 1
             printing = col.symbol.to_s.colorize(col.color)
-            print " #{printing}  ".colorize(background: :light_black)
+            print " #{printing} ".colorize(background: :light_black)
           elsif (i + j) % 2 == 0
             printing = col.symbol.to_s.colorize(col.color)
-            print " #{printing}  ".colorize(background: :light_red)
+            print " #{printing} ".colorize(background: :light_red)
           end
         end
       end

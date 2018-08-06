@@ -75,6 +75,9 @@ class Board
     elsif self[start_pos].class == Pawn
       self[start_pos].en_passantable = false
     end
+    if self[start_pos].class == Pawn && self[end_pos].class == NullPiece && self[[end_pos[0], ]]
+
+    end
     self[end_pos] = self[start_pos]
     self[start_pos] = @sentinel
     self[end_pos].has_moved = true
@@ -144,6 +147,7 @@ class Board
   end
 
   def dup
+    #Creating the new Board
     dup_board = Board.new()
     dup_board.rows.each_with_index do |row,i|
       row.each_with_index do |col, j|
@@ -151,6 +155,7 @@ class Board
       end
     end
     pieceArray = self.pieces
+    #Creating new pieces that each hold a reference to the new board
     pieceArray.each do |piece|
       new_piece = piece.class.new(piece.color, dup_board, piece.pos, piece.symbol)
       dup_board[new_piece.pos]= new_piece
