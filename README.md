@@ -75,7 +75,7 @@ def dup
   end
 ```
 
-### RangePieces and Steppieces
+### RangePieces and StepPieces
 
 All pieces aside from the Pawn can be considered one of these two categories. RangePieces refer to the Rook, Bishop and Queen or those with move "directions". The Knight and King can be considered Steppieces due to their fixed tiles of movement. Below is the code for determining the valid moves for each.
 
