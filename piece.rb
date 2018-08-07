@@ -16,7 +16,6 @@ class Piece
   end
 
   def valid_moves
-    #StepPiece valid moves
     all_poss_moves = @moves.map do |move|
       vector(pos, move)
     end
@@ -43,7 +42,6 @@ class Piece
           not_our_pieces.push([self.pos[0]-2, self.pos[1]]) unless board[[self.pos[0]-2, self.pos[1]]].class != NullPiece
         end
       end
-      #check this
       if self.board[self.pos[0], self.pos[1]+1].class == Pawn && self.board[self.pos[0], self.pos[1]+1].en_passantable == true
         not_our_pieces.push([self.pos[0]+1, self.pos[1]+1]) if self.color == :black
         not_our_pieces.push([self.pos[0]-1, self.pos[1]+1]) if self.color == :white

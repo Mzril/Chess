@@ -8,7 +8,6 @@ class RangePiece < Piece
   end
 
   def valid_moves
-    ## Rangepiece valid moves
     valids = []
     @moves.each do |move|
       possible_move = vector(pos,move)
