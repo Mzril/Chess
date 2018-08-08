@@ -29,11 +29,11 @@ class RangePiece < Piece
   def move_dirs
     diagonal_moves = [[1,1],[1,-1],[-1,1],[-1,-1]]
     straight_moves = [[0,1],[1,0],[-1,0],[0,-1]]
-    if symbol == ♖ || ♜
+    if symbol == :♖ || :♜
       @moves = straight_moves
-    elsif symbol == ♛ || ♕
+    elsif symbol == :♛ || :♕
       @moves = diagonal_moves+straight_moves
-    elsif symbol == ♗ || ♝
+    elsif symbol == :♗ || :♝
       @moves = diagonal_moves
     end
     @moves

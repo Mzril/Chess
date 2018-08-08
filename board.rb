@@ -69,14 +69,14 @@ class Board
     duped.move_piece!(color,start_pos, end_pos)
     raise ArgumentError.new("Can't move into Check") if duped.in_check?(color)
     raise ArgumentError.new("Invalid End position") unless self[start_pos].valid_moves.include?(end_pos)
-    if self[start_pos].class == Pawn && (start_pos[0]-end_pos[0]).abs == 2
-      self[start_pos].en_passantable = true
-    elsif self[start_pos].class == Pawn
-      self[start_pos].en_passantable = false
-    end
-    if self[start_pos].class == Pawn && self[end_pos].class == NullPiece && self[[end_pos[0], ]]
-
-    end
+    # if self[start_pos].class == Pawn && (start_pos[0]-end_pos[0]).abs == 2
+    #   self[start_pos].en_passantable = true
+    # elsif self[start_pos].class == Pawn
+    #   self[start_pos].en_passantable = false
+    # end
+    # if self[start_pos].class == Pawn && self[end_pos].class == NullPiece && self[[end_pos[0], end_pos[1]]]
+    #
+    # end
     self[end_pos] = self[start_pos]
     self[start_pos] = @sentinel
     self[end_pos].has_moved = true

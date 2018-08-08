@@ -8,9 +8,9 @@ class StepPiece < Piece
   end
 
   def move_diffs
-    if @symbol == ♘ || @symbol == ♞
+    if @symbol == :♘ || @symbol == :♞
       @moves = [[1,2], [2,1], [-2,1] ,[2,-1], [-1,2],[1,-2], [-2,-1], [-1,-2]]
-    elsif @symbol == ♔ || ♚
+    elsif @symbol == :♔ || :♚
       @moves = [[1,1], [-1,1], [-1,-1] ,[1,-1], [1,0],[-1,0], [0,-1], [0,1]]
     end
     @moves
